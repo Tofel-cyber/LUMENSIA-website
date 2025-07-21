@@ -13,4 +13,4 @@ Sistem rumah dan bangunan pintar berbasis IoT yang menghadirkan kontrol perangka
 📫 Kontak:
 - 📧 Email: lumensiasmarttechnologie@gmail.com  
 - 📍 Alamat: Bantulan RT 001, Gadingsari, Sanden, Bantul, Yogyakarta  
-- 📞 WhatsApp: 0882-4587-5733
+- 📞 WhatsApp: 0822-4587-5733
