@@ -1,226 +1,323 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+/* ======================================= */
+/* 1. VARIABEL & PENGATURAN DASAR          */
+/* ======================================= */
+:root {
+    --color-primary: #00bcd4; /* Cyan/Biru Muda (Digunakan sebagai warna utama) */
+    --color-accent: #ffc107; /* Kuning/Emas (Digunakan sebagai warna neon/aksen) */
+    --color-text-light: #e0e0e0;
+    --color-background-dark: #121212;
+    --color-background-darker: #0d0d0d;
+    --padding-section: 6rem 1rem;
 }
 
-/* Navbar */
-header {
-  background: #1a1a40;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 8%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+/* Menggunakan font Inter untuk body, Orbitron untuk Judul */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--color-text-light);
 }
 
+.dark-mode {
+    background-color: var(--color-background-dark);
+}
+
+/* Reset Link */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--color-accent);
+}
+
+/* Utility Classes */
+.mb-10 { margin-bottom: 4rem; }
+.mt-6 { margin-top: 1.5rem; }
+.p-5 { padding: 2.5rem; }
+
+/* Text Sizing & Styling */
+.text-huge { font-size: 3.5rem; font-weight: 900; line-height: 1.1; }
+.text-subtitle { font-size: 1.25rem; color: #a0a0a0; margin-bottom: 3rem; }
+.text-sm { font-size: 0.875rem; }
+.font-black { font-weight: 900; }
+.text-gray-400 { color: #a0a0a0; }
+.text-primary { color: var(--color-primary) !important; }
+.text-accent { color: var(--color-accent) !important; }
+
+
+/* ======================================= */
+/* 2. NEON GLOW EFFECTS (Kunci Desain)     */
+/* ======================================= */
+.neon-glow {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-accent); /* Warna dasar */
+    text-shadow: 
+        0 0 7px rgba(255, 193, 7, 0.5), /* Cahaya lembut */
+        0 0 10px rgba(255, 193, 7, 0.4),
+        0 0 20px rgba(255, 193, 7, 0.3); /* Cahaya kuat */
+}
+
+/* Border dengan efek neon (untuk Project Card / Payment Info) */
+.border-neon-accent {
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+    border-radius: 8px;
+}
+
+/* ======================================= */
+/* 3. LAYOUT & STRUKTUR                    */
+/* ======================================= */
+.section-padding {
+    padding: var(--padding-section);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+}
+
+.bg-darker {
+    background-color: var(--color-background-darker);
+}
+
+/* Grid Layouts */
+.grid-layout {
+    display: grid;
+    gap: 2rem;
+}
+.manager-grid {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.metric-grid {
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* ======================================= */
+/* 4. NAVBAR & FOOTER                      */
+/* ======================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem var(--padding-section);
+    background-color: rgba(18, 18, 18, 0.95); /* Sedikit transparan */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
 .logo img {
-  height: 50px;
-  width: auto;
-  display: block;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+}
+.company-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+}
+.nav-links a {
+    margin-left: 1.5rem;
+    color: var(--color-text-light);
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+}
+.nav-links a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: bold;
-  transition: color 0.3s;
+.footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: var(--color-background-darker);
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    color: #888;
 }
 
-nav a:hover {
-  color: #00d9ff;
-}
-
-/* Hero */
+/* ======================================= */
+/* 5. HERO SECTION                         */
+/* ======================================= */
 .hero {
-  height: 90vh;
-  background: linear-gradient(to right, #1a1a40, #30306d);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.btn {
-  background: #00d9ff;
-  color: #1a1a40;
-  padding: 12px 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #00b8d9;
-}
-
-/* Section umum */
-.section {
-  padding: 60px 10%;
-  text-align: center;
-}
-
-.section h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #1a1a40;
-}
-
-.section p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-/* Services */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 30px;
-  gap: 20px;
-}
-
-.card {
-  background: #f4f4f9;
-  padding: 25px;
-  border-radius: 12px;
-  width: 280px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* Kontak */
-#contact {
-  padding: 60px 10%;
-  background: #f4f4f9;
-}
-
-#contact ul {
-  list-style: none;
-  margin-bottom: 20px;
-}
-
-#contact li {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.payment-info {
-  margin-top: 15px;
-  font-weight: bold;
-  color: #1a1a40;
-}
-
-.highlight {
-  color: #e63946;
-}
-
-/* Footer */
-footer {
-  background: #1a1a40;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-}
-/* Responsive Design */
-@media (max-width: 768px) {
-  /* Navbar */
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
-  }
-
-  nav {
-    margin-top: 10px;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
-  }
-
-  nav a {
-    margin: 10px 0;
-    font-size: 1rem;
-  }
-
-  /* Hero Section */
-  .hero {
-    padding: 60px 20px;
-    height: auto;
-  }
-
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .btn {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
-
-  /* Services */
-  .services {
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  /* Contact */
-  #contact {
-    padding: 40px 20px;
-  }
-
-  #contact li {
-    font-size: 1rem;
-  }
+    text-align: center;
+    padding: 5rem 1rem;
+    background: url('https://via.placeholder.com/1500x800/212529/dee2e6?text=Smart+Tech+Background') no-repeat center center/cover;
+    position: relative;
+    z-index: 1;
+    border-bottom: 5px solid var(--color-primary);
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Overlay gelap */
+    z-index: -1;
 }
 
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.5rem;
-  }
+/* ======================================= */
+/* 6. CARDS & ELEMENTS                     */
+/* ======================================= */
+.about-card {
+    background-color: var(--color-background-darker);
+    padding: 2rem;
+    border-left: 5px solid var(--color-primary);
+    border-radius: 4px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.mission-list {
+    list-style: none;
+    padding-left: 0;
+}
+.mission-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+.mission-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+}
 
-  .hero p {
-    font-size: 0.9rem;
-  }
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--color-accent);
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+.profile-card {
+    background-color: var(--color-background-dark);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #333;
+}
 
-  nav a {
-    font-size: 0.9rem;
-  }
+.project-card, .payment-info {
+    background-color: var(--color-background-darker);
+    padding: 3rem;
+    margin: 0 auto;
+    max-width: 1000px;
+    border-radius: 8px;
+}
+
+.metric-box {
+    padding: 1rem;
+}
+
+.card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.service-card {
+    background-color: var(--color-background-dark);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+.neon-hover:hover {
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Shadow warna primary saat hover */
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+
+/* ======================================= */
+/* 7. BUTTONS                              */
+/* ======================================= */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    border: none;
+}
+.btn-primary.neon-hover:hover {
+    background-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-primary), 0 0 25px var(--color-primary);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+.btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+    box-shadow: 0 0 10px var(--color-accent);
+}
+
+/* ======================================= */
+/* 8. MEDIA QUERIES (Responsif)            */
+/* ======================================= */
+@media (min-width: 768px) {
+    .manager-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .text-huge {
+        font-size: 5rem;
+    }
+}
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        padding-top: 1.5rem;
+    }
+    .nav-links {
+        margin-top: 1rem;
+    }
+    .nav-links a {
+        margin: 0 0.5rem;
+    }
+    .text-huge {
+        font-size: 2.5rem;
+    }
+    .section-padding {
+        padding: 3rem 1rem;
+    }
 }
